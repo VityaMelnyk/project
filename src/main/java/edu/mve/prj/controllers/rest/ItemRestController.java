@@ -1,6 +1,7 @@
 package edu.mve.prj.controllers.rest;
 
 import edu.mve.prj.model.Item;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,6 +21,15 @@ import java.util.stream.Stream;
 
     @RequestMapping("/all")
     List<Item> getAll() {
+
         return list;
+    }
+    @RequestMapping("/delete/{id}")
+    String deleteById(@PathVariable("id") String id) {
+        Item item = list.stream().filter(element -> element.getId().equals(id))
+                .findFirst().orElse(null);
+        list.remove(item);
+
+        return "redirect:/api/item/all";
     }
 }

@@ -14,7 +14,7 @@
 <br>
 <div>
 
-    <table class="table table-dark">
+    <table class="table table-striped table-dark">
         <thead>
         <tr>
             <th>id</th>
@@ -22,27 +22,27 @@
             <th>Description</th>
             <th>Created</th>
             <th>Modified</th>
+            <th>Delete</th>
         </tr>
         </thead>
         <#list items as element> <!--Цикл по всем item-->
             <!--Для кожного item в списке item, який ми отримали з контроллера.Формуєм строку <tr>.
             У етой строки есть 5 ячеек
             Каждая ячейка является полем елементу(id,name,...)-->
-        <tbody>
-            <tr>
+            <tbody>
+                <tr>
                 <td>${element.id}</td>
                 <td>${element.name}</td>
                 <td>${element.description}</td>
                 <td>${element.created_at}</td>
                 <td>${element.modified_at}</td>
+                <td><a href="/web/item/delete/${element.id}" class="btn btn-warning">Delete</a></td>
+                <td><a href="/web/item/delete/${element.id}" class="btn btn-success">Edit</a></td>
 
-            </tr>
-        </tbody>
-        </#list>
+                </tr>
+            </#list>
 
-    </table>
-
+        </table>
 </div>
-
 </body>
 </html>
